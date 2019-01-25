@@ -17,7 +17,7 @@ class Pet extends React.Component {
               <dt>Breed:</dt><dd>{this.props.breed}</dd>
               <dt>Story:</dt><dd>{this.props.story}</dd>
             </dl>
-            <button>Adopt Me!</button>
+            <button onClick={this.props.onAdoptPet}>Adopt Me!</button>
           </main>
         </section>
       </div>

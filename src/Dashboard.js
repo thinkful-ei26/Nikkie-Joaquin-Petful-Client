@@ -4,8 +4,8 @@ import './Dashboard.css';
 
 class Dashboard extends React.Component {
   render() {
-    let cat= <Pet {...this.props.catToAdopt} ></Pet>
-    let dog= <Pet {...this.props.dogToAdopt} ></Pet>
+    let cat= <Pet onAdoptPet={e => console.log('ADOPT CLICKED')} {...this.props.catToAdopt} ></Pet>
+    let dog= <Pet onAdoptPet={e => console.log('ADOPT CLICKED')} {...this.props.dogToAdopt} ></Pet>
 
     return (
       <div className="dashboard">
