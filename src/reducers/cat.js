@@ -7,7 +7,46 @@ const initialState= {
 }
 
 export const reducer = (state = initialState, action)=> {
-  if(action===FETCH_CAT_REQUEST)
+  if(action===FETCH_CAT_REQUEST){
+    return Object.assign({}, state, {
+      loading: true
+    })
+  }
+
+  else if(action===FETCH_CAT_SUCCESS){
+    return Object.assign({}, state, {
+      loading: false,
+      error: null,
+      data: action.cat
+    })
+  }
+
+  else if(action===FETCH_CAT_ERROR){
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.err
+    })
+  }
+
+  else if(action===ADOPT_CAT_REQUEST){
+    return Object.assign({}, state, {
+      loading: true
+    })
+  }
+
+  else if(action===ADOPT_CAT_SUCCESS){
+    return Object.assign({}, state, {
+      loading: false,
+      error: null,
+    })
+  }
+
+  else if (action===ADOPT_CAT_ERROR){
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.err,
+    })
+  }
 
   return state;
 }
