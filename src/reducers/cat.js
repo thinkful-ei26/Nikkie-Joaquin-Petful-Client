@@ -6,14 +6,14 @@ const initialState= {
   loading: false
 }
 
-export const reducer = (state = initialState, action)=> {
-  if(action===FETCH_CAT_REQUEST){
+export const catReducer = (state = initialState, action)=> {
+  if(action.type===FETCH_CAT_REQUEST){
     return Object.assign({}, state, {
       loading: true
     })
   }
 
-  else if(action===FETCH_CAT_SUCCESS){
+  else if(action.type===FETCH_CAT_SUCCESS){
     return Object.assign({}, state, {
       loading: false,
       error: null,
@@ -21,27 +21,27 @@ export const reducer = (state = initialState, action)=> {
     })
   }
 
-  else if(action===FETCH_CAT_ERROR){
+  else if(action.type===FETCH_CAT_ERROR){
     return Object.assign({}, state, {
       loading: false,
       error: action.err
     })
   }
 
-  else if(action===ADOPT_CAT_REQUEST){
+  else if(action.type===ADOPT_CAT_REQUEST){
     return Object.assign({}, state, {
       loading: true
     })
   }
 
-  else if(action===ADOPT_CAT_SUCCESS){
+  else if(action.type===ADOPT_CAT_SUCCESS){
     return Object.assign({}, state, {
       loading: false,
       error: null,
     })
   }
 
-  else if (action===ADOPT_CAT_ERROR){
+  else if (action.type===ADOPT_CAT_ERROR){
     return Object.assign({}, state, {
       loading: false,
       error: action.err,

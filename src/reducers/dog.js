@@ -6,14 +6,17 @@ const initialState= {
   loading: false
 }
 
-export const reducer = (state = initialState, action)=> {
-  if(action===FETCH_DOG_REQUEST){
+export const dogReducer = (state = initialState, action)=> {
+  console.log('in reducer action is', action);
+  if(action.type===FETCH_DOG_REQUEST){
+    console.log('requesting');
     return Object.assign({}, state, {
       loading: true
     })
   }
 
-  else if(action===FETCH_DOG_SUCCESS){
+  else if(action.type===FETCH_DOG_SUCCESS){
+    console.log(action.dog);
     return Object.assign({}, state, {
       loading: false,
       error: null,
@@ -21,27 +24,27 @@ export const reducer = (state = initialState, action)=> {
     })
   }
 
-  else if(action===FETCH_DOG_ERROR){
+  else if(action.type===FETCH_DOG_ERROR){
     return Object.assign({}, state, {
       loading: false,
       error: action.err
     })
   }
 
-  else if(action===ADOPT_DOG_REQUEST){
+  else if(action.type===ADOPT_DOG_REQUEST){
     return Object.assign({}, state, {
       loading: true
     })
   }
 
-  else if(action===ADOPT_DOG_SUCCESS){
+  else if(action.type===ADOPT_DOG_SUCCESS){
     return Object.assign({}, state, {
       loading: false,
       error: null,
     })
   }
 
-  else if (action===ADOPT_DOG_ERROR){
+  else if (action.type===ADOPT_DOG_ERROR){
     return Object.assign({}, state, {
       loading: false,
       error: action.err,

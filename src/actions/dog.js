@@ -40,9 +40,16 @@ export const fetchDog = () => (dispatch) => {
   })
       .then(res => res.json())
       .then(dog => {
-         dispatch(fetchDogSuccess(dog))
+        console.log('success fetch dog', dog);
+        if(dog.oldestDog){
+          dispatch(fetchDogSuccess(dog.oldestDog))
+        }
+        else{
+          dispatch(fetchDogError('No more dogs for adoption at this time'))
+        }
       })
-      .dogch(err => {
+      .catch(err => {
+        console.log("error");
           dispatch(fetchDogError(err));
       });
 };
@@ -52,7 +59,6 @@ export const adoptDog = () => (dispatch) => {
   fetch(`${API_BASE_URL}/api/dog`, {
       method: 'DELETE',
   })
-      .then(res => res.json())
       .then(() => {
          dispatch(adoptDogSuccess())
       })

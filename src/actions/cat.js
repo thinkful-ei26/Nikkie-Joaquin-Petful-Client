@@ -40,7 +40,14 @@ export const fetchCat = () => (dispatch) => {
   })
       .then(res => res.json())
       .then(cat => {
-         dispatch(fetchCatSuccess(cat))
+        console.log('fetched', cat)
+        if(cat.oldestCat){
+          dispatch(fetchCatSuccess(cat.oldestCat))
+        }
+        else{
+          console.log('err msess')
+          dispatch(fetchCatError('No more cats for adoption at this time'))
+        }
       })
       .catch(err => {
           dispatch(fetchCatError(err));
@@ -52,7 +59,6 @@ export const adoptCat = () => (dispatch) => {
   fetch(`${API_BASE_URL}/api/cat`, {
       method: 'DELETE',
   })
-      .then(res => res.json())
       .then(() => {
          dispatch(adoptCatSuccess())
       })
